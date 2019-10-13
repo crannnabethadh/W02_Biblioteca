@@ -64,5 +64,25 @@ namespace W02_BibliotecaWinformUI
 
             authorsForm?.Show();
         }
+
+        private void booksListBox_DoubleClick(object sender, EventArgs e)
+        {
+            Book selectedBook = booksListBox.SelectedItem as Book;
+            BookDetailsFormDialog bookDetailsForm = new BookDetailsFormDialog(selectedBook);
+            
+            //Button prop DialogResult
+
+            if (bookDetailsForm.ShowDialog(this) == DialogResult.OK)
+            {
+                // Read the contents of testDialog's TextBox.
+                //this.txtResult.Text = testDialog.TextBox1.Text;
+            }
+            else
+            {
+                //this.txtResult.Text = "Cancelled";
+
+            }
+            bookDetailsForm.Dispose();
+        }
     }
 }

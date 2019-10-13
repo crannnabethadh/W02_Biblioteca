@@ -50,7 +50,7 @@ namespace W02_BibliotecaWinformUI
 
         private void AuthorsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //Application.Exit();
+            Application.Exit();
         }
     }
 }

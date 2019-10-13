@@ -82,6 +82,7 @@
             this.booksListBox.Name = "booksListBox";
             this.booksListBox.Size = new System.Drawing.Size(480, 264);
             this.booksListBox.TabIndex = 4;
+            this.booksListBox.DoubleClick += new System.EventHandler(this.booksListBox_DoubleClick);
             // 
             // label3
             // 
