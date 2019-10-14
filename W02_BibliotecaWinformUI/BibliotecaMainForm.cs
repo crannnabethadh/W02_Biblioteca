@@ -68,16 +68,19 @@ namespace W02_BibliotecaWinformUI
         private void booksListBox_DoubleClick(object sender, EventArgs e)
         {
             Book selectedBook = booksListBox.SelectedItem as Book;
-            BookDetailsFormDialog bookDetailsForm = new BookDetailsFormDialog(selectedBook);
-            
+            BookDetailsFormDialog bookDetailsForm =
+                new BookDetailsFormDialog(selectedBook);
+
             //Button prop DialogResult
 
-            if (bookDetailsForm.ShowDialog(this) == DialogResult.OK)
+            DialogResult result = bookDetailsForm.ShowDialog(this);
+
+            if ( result == DialogResult.OK)
             {
                 // Read the contents of testDialog's TextBox.
                 //this.txtResult.Text = testDialog.TextBox1.Text;
             }
-            else
+            else if (result == DialogResult.Cancel)
             {
                 //this.txtResult.Text = "Cancelled";
 

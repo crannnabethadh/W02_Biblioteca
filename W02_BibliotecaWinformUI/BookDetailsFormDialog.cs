@@ -17,7 +17,10 @@ namespace W02_BibliotecaWinformUI
         {
             InitializeComponent();
             _selectedBook = selectedBook;
-            // TODO: Connect to database, get details of book and show them in form
+            // TODO: Connect to database,
+            // get details of book and show them in form
+        
+        
         }
     }
 }
