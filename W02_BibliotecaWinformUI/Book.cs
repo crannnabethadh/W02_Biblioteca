@@ -11,6 +11,9 @@ namespace W02_BibliotecaWinformUI
         public int ID_LLIB { get; set; }
         //public string TITOL { get; set; }
         public string TITOL { get; set; }
+        public string DESCRIP_LLIB { get; set; }
+        public string NOM_AUTOR { get; set; }
+        public string FK_DEPARTAMENT { get; set; }
         public string FullInfo
         {
             get
