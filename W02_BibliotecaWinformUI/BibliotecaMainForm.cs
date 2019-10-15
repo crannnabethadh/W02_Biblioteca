@@ -26,24 +26,16 @@ namespace W02_BibliotecaWinformUI
 
         private void FindButton_Click(object sender, EventArgs e)
         {
-            List<Book> books = new List<Book>();
+            List<string> books = new List<string>();
             MySqlConnection connection = new MySqlConnection(connectionString);
             string sql = $"SELECT ID_LLIB, TITOL FROM LLIBRES" +
                 $" WHERE TITOL LIKE '%{searchTextBox.Text}%'";
-            books = connection.Query<Book>(sql).ToList();
+            books = connection.Query<string>(sql).ToList();
 
-            //for (int i = 0; i < books.Count; i++)
-            //{
-            //    booksListBox.Items.Add( books[i].TITOL );
-            //}
-
-            //foreach(var book in books)
-            //{
-            //    booksListBox.Items.Add(book.ID_LLIB + ":\t" + book.TITOL);
-            //}
-
-            booksListBox.DataSource = books;
-            booksListBox.DisplayMember = "FullInfo";
+            foreach (var book in books)
+            {
+                booksListBox.Items.Add(book + ":\t" + book);
+            }
 
             connection.Close();
         }
@@ -62,14 +54,14 @@ namespace W02_BibliotecaWinformUI
                 existsAuthorsForm = true;
             }
 
-            authorsForm?.Show();
+            authorsForm?.Dispose();
         }
 
         private void booksListBox_DoubleClick(object sender, EventArgs e)
         {
             Book selectedBook = booksListBox.SelectedItem as Book;
             BookDetailsFormDialog bookDetailsForm =
-                new BookDetailsFormDialog(selectedBook);
+                new BookDetailsFormDialog();
 
             //Button prop DialogResult
 

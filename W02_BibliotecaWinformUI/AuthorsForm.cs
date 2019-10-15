@@ -15,7 +15,7 @@ namespace W02_BibliotecaWinformUI
     public partial class AuthorsForm : Form
     {
         private string connectionString =
-            "Server=localhost;Port=3306;Database=biblioteca;Uid=lector;Pwd=seCret_16;";
+            "Server=localhost;Port=3307;Database=biblioteca;Uid=lector;Pwd=seCret_16;";
 
         public AuthorsForm()
         {
@@ -25,10 +25,10 @@ namespace W02_BibliotecaWinformUI
         private void authorFindButton_Click(object sender, EventArgs e)
         {
             List<Author> authors = new List<Author>();
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlConnection connection = new MySqlConnection();
             string sql = $"SELECT ID_AUT, NOM_AUT FROM AUTORS" +
-                $" WHERE NOM_AUT LIKE '%{authorSearchTextBox.Text}%'";
-            authors = connection.Query<Author>(sql).ToList();
+                $" WHERE NOM_AUT LIKE '%{authorSearchTextBox.Name}%'";
+            authors = connection.Query<Author>(sql);
             authorsListBox.DataSource = authors;
             authorsListBox.DisplayMember = "FullInfo";
 
