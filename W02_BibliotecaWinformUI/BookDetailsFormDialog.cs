@@ -14,15 +14,15 @@ namespace W02_BibliotecaWinformUI
 {
     public partial class BookDetailsFormDialog : Form
     {
-        Book _selectedBook;
+
         private string connectionString =
             "Server=localhost;Port=3306;Database=biblioteca;" +
             "Uid=lector;Pwd=seCret_16;";
 
-        public BookDetailsFormDialog(Book selectedBook)
+        public BookDetailsFormDialog()
         {
             InitializeComponent();
-            _selectedBook = selectedBook;
+
             // TODO: Connect to database,
             // get details of book and show them in form
 
@@ -31,8 +31,8 @@ namespace W02_BibliotecaWinformUI
             string sql = $"SELECT ID_LLIB, LLIBRES.TITOL, LLIBRES.DESCRIP_LLIB, AUTORS.NOM_AUT," +
                 $" LLIBRES.FK_DEPARTAMENT FROM LLIBRES JOIN LLI_AUT ON LLIBRES.ID_LLIB = LLI_AUT.FK_IDLLIB" +
                 $" JOIN AUTORS ON LLI_AUT.FK_IDAUT = AUTORS.ID_AUT" +
-                $" WHERE ID_LLIB = { selectedBook.ID_LLIB }";
-            books = connection.Query<Book>(sql).ToList();
+                $" WHERE ID_LLIB = ";
+            
             Book book = books.FirstOrDefault();
             titolLabel.Text = book.TITOL;
             descripcioLabel.Text = book.DESCRIP_LLIB;
